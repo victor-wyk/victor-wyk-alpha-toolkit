@@ -60,22 +60,31 @@
             [8, 9]
         ]
      */
-    function clusterGroupsExcludeLastInBetween($data, $first, $last, $group, $id)
+    function clusterGroupsExcludeLastInBetween($data, $group, $id, $first, $last=null)
     {
+        // Create container to store clusters.
         $clusters = [];
+        // Create variable to hold previous iteration group.
         $last_group = null;
-
+        
+        // Iterate through dataset, with index.
         foreach ($data as $index => $datum)
         {
+            // If current iteration group is $first and the previous iterated group is not $first.
             if ($datum[$group] === $first && $last_group !== $first) {
+                // Iterate through dataset again.
                 foreach ($data as $index_2nd_iteration => $datum_2nd_iteration)
                 {
-                    if ($index < $index_2nd_iteration && $datum_2nd_iteration[$group] === $last) {
-                        $clusters[] = [$datum[$id], $datum_2nd_iteration[$id]];
-                        break;
+                    // Search groups that have index larger than the group in the outer iteration and...
+                    if ($index < $index_2nd_iteration &&
+                        // ...and if $last is not provided then any group that does not match $first will be counted as the 'last' group.
+                        (isset($last) ? $datum_2nd_iteration[$group] === $last : $datum_2nd_iteration[$group] !== $first )) {
+                            $clusters[] = [$datum[$id], $datum_2nd_iteration[$id]];
+                            break;
                     }
                 }
             }
+            // Store outer iteration group in variable.
             $last_group = $datum[$group];
         }
         return $clusters;
