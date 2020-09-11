@@ -50,7 +50,7 @@
             ['group' => 'B', 'id' => 9]
         ];
      *
-     * Function would be called as: clusterGroupsExcludeLastInBetween($data, 'A', 'B', 'group', 'id')
+     * Function would be called as such: clusterGroupsExcludeLastInBetween($data, 'A', 'B', 'group', 'id')
      *
      * Function output would be:
         [
