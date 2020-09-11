@@ -1,3 +1,10 @@
+<?php
+
+/**
+ * @author Victor Wan
+ * @copyright 2020
+ */
+
 /*
      * Custom algorithm to cluster groups based on table format.
      * Clustering method:
