@@ -60,7 +60,7 @@
             [8, 9]
         ]
      */
-    function clusterGroupsExcludeLastInBetween($data, $group, $id, $first, $last=null)
+    function clusterHighLow($data, $group, $id, $first, $last=null)
     {
         // Create container to store clusters.
         $clusters = [];
