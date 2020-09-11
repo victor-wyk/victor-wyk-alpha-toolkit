@@ -75,10 +75,11 @@
                 // Iterate through dataset again.
                 foreach ($data as $index_2nd_iteration => $datum_2nd_iteration)
                 {
-                    // Search groups that have index larger than the group in the outer iteration and...
+                    // Search for $last starting from index larger than the group in the outer iteration...
                     if ($index < $index_2nd_iteration &&
                         // ...and if $last is not provided then any group that does not match $first will be counted as the 'last' group.
                         (isset($last) ? $datum_2nd_iteration[$group] === $last : $datum_2nd_iteration[$group] !== $first )) {
+                            // If satistified then store IDs in array and push to container.
                             $clusters[] = [$datum[$id], $datum_2nd_iteration[$id]];
                             break;
                     }
