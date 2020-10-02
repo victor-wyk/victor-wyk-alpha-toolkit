@@ -6,7 +6,10 @@
  */
 
 /*
-     * Custom algorithm to cluster groups based on table format.
+     * Custom algorithm to cluster pair groups in a table format.
+     * One particular usage of this was to find the time differences between receiving a customer's email (A), and responding to the customer's email (B), in order to measure employee performance.
+     * The time differences are returned in an array and is processed outside this function.
+     *
      * Clustering method:
      *      - A first, B last. 
      *      - no B in between the first A and last B of the cluster.
@@ -50,7 +53,7 @@
             ['group' => 'B', 'id' => 9]
         ];
      *
-     * Function would be called as such: clusterGroupsExcludeLastInBetween($data, 'A', 'B', 'group', 'id')
+     * To use function: clusterHighAHighB($data,'group','id','A','B')
      *
      * Function output would be:
         [
@@ -60,7 +63,7 @@
             [8, 9]
         ]
      */
-    function clusterHighLow($data, $group, $id, $first, $last=null)
+    function clusterHighAHighB($data, $group, $id, $first, $last=null)
     {
         // Create container to store clusters.
         $clusters = [];
